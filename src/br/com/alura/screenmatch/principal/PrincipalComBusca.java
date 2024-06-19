@@ -5,12 +5,20 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 public class PrincipalComBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
+
+        Scanner leitura = new Scanner(System.in);
+        System.out.println("Informe o nome do filme que deseja buscar: ");
+        var busca = leitura.nextLine();
+        String endereco = "https://www.omdbapi.com/?t=" + busca + "&apiKey=67abc709";
+        endereco = endereco.replace(" ", "+");
+
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://www.omdbapi.com/?t=Matrix&apiKey=67abc709"))
+                .uri(URI.create(endereco))
                 .build();
         HttpResponse<String> response = client
                 .send(request, HttpResponse.BodyHandlers.ofString());
