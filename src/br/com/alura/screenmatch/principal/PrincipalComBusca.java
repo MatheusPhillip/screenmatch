@@ -1,5 +1,6 @@
 package br.com.alura.screenmatch.principal;
 
+import br.com.alura.screenmatch.excecao.ErroDeConversaoDeAnoException;
 import br.com.alura.screenmatch.modelos.Titulo;
 import br.com.alura.screenmatch.modelos.TituloOmdb;
 import com.google.gson.FieldNamingPolicy;
@@ -43,6 +44,8 @@ public class PrincipalComBusca {
             System.out.println(meuTitulo);
         }catch (NumberFormatException exception){
             System.out.println("Aconteceu um erro: ");
+            System.out.println(exception.getMessage());
+        }catch (ErroDeConversaoDeAnoException exception){
             System.out.println(exception.getMessage());
         }
 
